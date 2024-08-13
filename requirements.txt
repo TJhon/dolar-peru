@@ -1,0 +1,10 @@
+selenium 
+pandas 
+numpy 
+requests
+ipykernel
+python-dotenv
+
+nbclient
+nbformat
+PyYAML

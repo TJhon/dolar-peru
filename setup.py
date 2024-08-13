@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="DolarPeru",
+    name="DollarPeru",
     version="0.1.1",
     description="Scrapea el precio del dolar en diferentes casas de cambio y bancos",
     author="Tjhon",

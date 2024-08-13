@@ -1,0 +1,44 @@
+name: Actualizar Readme
+
+on:
+  push:
+    branches:
+      - api
+
+jobs:
+  CreateQuarto:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Chequear el  código
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+      - run: pip uninstall DollarPeru
+      - run: pip install git+https://github.com/TJhon/dolar-peru@api
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generar quarto doc
+        run: quarto render README.qmd
+
+      - id: commit
+        name: Commit  files
+        run: |
+          git config --local user.name "action-user"
+          git pull
+          git config --local user.email "actions@github.com"
+          git add -A
+          git commit -m "Update Readme"
+          git push origin api
+        env:
+          REPO_KEY: ${{ secrets.GITHUB_TOKEN }}
+          username: github-actions
