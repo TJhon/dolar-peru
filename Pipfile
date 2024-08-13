@@ -5,11 +5,11 @@ name = "pypi"
 
 [packages]
 selenium = "*"
-bs4 = "*"
 pandas = "*"
 numpy = "*"
 python-dotenv = "*"
 ipykernel = "*"
+requests = "*"
 
 [dev-packages]
 
