@@ -5,7 +5,7 @@ on:
     branches:
       - database
   schedule:
-    - cron: "0,45 13-23 * * *"
+    - cron: "*/45 13-23 * * *"
 
 jobs:
   Scrapper:
