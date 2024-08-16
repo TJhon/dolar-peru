@@ -1,6 +1,9 @@
 name: Actualizar precio del dolar
 
 on:
+  push:
+    branches:
+      - database
   schedule:
     - cron: "*/45 * * * *"
 
