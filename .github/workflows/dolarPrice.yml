@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - database
+      - main
   schedule:
     - cron: "*/45 13-23 * * *"
 
