@@ -29,7 +29,10 @@ jobs:
       - name: Chromium action
         uses: browser-actions/setup-chrome@v1
 
-      - uses: nanasess/setup-chromedriver@v1
+      - name: Instalar Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install chromium-chromedriver
 
       - run: python run_api.py
 
