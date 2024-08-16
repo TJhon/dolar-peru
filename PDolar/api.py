@@ -17,7 +17,8 @@ def value_extrar_dict(ref: dict):
 class PeruDolar:
     def __init__(
         self,
-        url="https://cuantoestaeldolar.pe/_next/data/PelW_tB5ARYtZktu7nOSo/cambio-de-dolar-online.json",
+        base_url="https://cuantoestaeldolar.pe/_next/data/{}/cambio-de-dolar-online.json",
+        id="PelW_tB5ARYtZktu7nOSo",
         data_key="pageProps",
         banks_key="exchangeBanks",
         house_key="onlineExchangeHouses",
@@ -28,6 +29,7 @@ class PeruDolar:
             "sale_variation",
         ],
     ) -> None:
+        url = base_url.format(id)
         self.url = url
         self.data_key = data_key
         self.bank_key = banks_key
