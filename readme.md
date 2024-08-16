@@ -8,7 +8,7 @@
 
 ```sh
 # Stable
-pip install git+https://github.com/TJhon/tesis_peru@api
+pip install git+https://github.com/TJhon/dolar-peru@api
 ```
 
 ## Usage
