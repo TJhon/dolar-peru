@@ -5,7 +5,7 @@ on:
     branches:
       - database
   schedule:
-    - cron: "*/45 * * * *"
+    - cron: "0,45 13-23 * * *"
 
 jobs:
   Scrapper:
@@ -26,10 +26,12 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
+      - name: Chromium action
+        uses: browser-actions/setup-chrome@v1
+
       - name: Instalar Chromium
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser
           sudo apt-get install chromium-chromedriver
 
       - run: python run_api.py
