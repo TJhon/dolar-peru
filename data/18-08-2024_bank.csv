@@ -1,0 +1,10 @@
+name,type,buy_cost,buy_variation,sale_cost,sale_variation,time
+scotiabank,bank,3.658,0.01,3.829,0.0,15:01:32
+bbva,bank,3.67,0.004,3.817,0.002,15:01:32
+Interbank,bank,3.678,0.005,3.789,0.001,15:01:32
+bcp,bank,3.7,0.004,3.787,0.002,15:01:32
+nacion,bank,3.71,0.0,3.78,0.0,15:01:32
+Yuan,currency,0.45,-0.01,0.54,0.0,15:01:32
+canada,currency,2.65,-0.04,2.795,-0.005,15:01:32
+euro ocoña,currency,4.17,-0.001,4.19,0.0,15:01:32
+Libra,currency,4.85,-0.01,4.99,0.0,15:01:32
