@@ -33,7 +33,6 @@ jobs:
           sudo apt-get install -y chromium-browser
           sudo apt-get install chromium-chromedriver
 
-      - run: python run_selenium.py
       - run: python run_api.py
 
       - id: commit
