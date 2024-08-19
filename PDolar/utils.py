@@ -28,8 +28,8 @@ def today_csv(house: pd.DataFrame, bank: pd.DataFrame, date = today):
 nextid = "log/buildID_next.csv"
 
 
-def read_ids() -> pd.DataFrame:
-    return pd.read_csv(nextid)
+def read_ids(url_logs = 'https://raw.githubusercontent.com/TJhon/dolar-peru/main/log/buildID_next.csv') -> pd.DataFrame:
+    return pd.read_csv(url_logs)
 
 
 def get_last_id() -> str:
