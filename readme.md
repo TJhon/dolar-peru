@@ -1,6 +1,3 @@
-# Dolar Peru
-
-
 # Dolar Perú Tracker
 
 This tool allows you to scrape the price of the dollar from various
