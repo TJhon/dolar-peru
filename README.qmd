@@ -1,5 +1,4 @@
 ---
-title: Dolar Peru
 format: gfm
 jupyter: python3
 ---
