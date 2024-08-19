@@ -1,4 +1,4 @@
-name: Actualizar precio del dolar
+name: Next data api id deployment
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
       - database
       - main
   schedule:
-    - cron: "5,35 13-23 * * *"
+    - cron: "1 13-23/3 * * *"
 
 jobs:
-  GetDolarData:
+  BuildID:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,7 +27,13 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - run: python run_api.py
+      - name: Instalar Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          sudo apt-get install chromium-chromedriver
+
+      - run: python get_id_api.py
 
       - id: commit
         name: Commit  files
@@ -36,7 +42,7 @@ jobs:
           git pull
           git config --local user.email "actions@github.com"
           git add -A
-          git commit -m "Update Data"
+          git commit -m "Update ID deploy"
           git push origin main
         env:
           REPO_KEY: ${{ secrets.GITHUB_TOKEN }}

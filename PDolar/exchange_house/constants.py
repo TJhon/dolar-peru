@@ -3,12 +3,12 @@ N_rows = 13
 MIN_LEFT = 28
 MIN_RIGHT = 2
 COLUMNS_NAMES = [
-    "actualizacion",
+    "last_updated",
     "trash1",
-    "compra",
-    "variacion_compra",
-    "venta",
-    "variacion_venta",
+    "buy",
+    "buy_variation",
+    "sale",
+    "sale_variation",
     "img_url",
     "companny_url",
 ]
