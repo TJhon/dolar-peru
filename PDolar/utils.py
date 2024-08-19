@@ -9,7 +9,7 @@ now = dt.datetime.now(gmt5).strftime("%H:%M:%S")
 
 
 def exist_and_save_now(data: pd.DataFrame, csv_path: str):
-    data = data.assign(time=now)
+    data = data.assign(time=now, day = today)
     if os.path.exists(csv_path):
         data_last = pd.read_csv(csv_path)
         new_data = pd.concat((data_last, data))
