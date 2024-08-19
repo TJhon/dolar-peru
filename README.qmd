@@ -38,13 +38,13 @@ tracker = PeruDolar(id = None)
 3. Access the information from banks:
 
 ```{python}
-tracker.bank.head()
+tracker.bank.tail()
 ```
 
 4. Check the data from exchange houses:
 
 ```{python}
-tracker.houses.head()
+tracker.houses.tail()
 ```
 
 5. Retrieve data from SUNAT:
@@ -85,12 +85,12 @@ Retrieve data for the last days number of days.
 
 ```{python}
 data_last = last_days_data(days=2)
-data_last["he"].head()
+data_last["he"].tail()
 ```
 
 ```{python}
 
-data_last["bank"].head()
+data_last["bank"].tail()
 ```
 
 #### Especific Date
@@ -99,12 +99,12 @@ Get data for a specific date.
 
 ```{python}
 data_day = load_day_data(today - timedelta(1))
-data_day["he"].head()
+data_day["he"].tail()
 ```
 
 ```{python}
 
-data_day["bank"].head()
+data_day["bank"].tail()
 ```
 
 
