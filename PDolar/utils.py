@@ -18,9 +18,9 @@ def exist_and_save_now(data: pd.DataFrame, csv_path: str):
         data.to_csv(csv_path, index=False)
 
 
-def today_csv(house: pd.DataFrame, bank: pd.DataFrame):
-    house_csv = f"data/{today}_he.csv"  # house_exchange
-    bank_csv = f"data/{today}_bank.csv"
+def today_csv(house: pd.DataFrame, bank: pd.DataFrame, date = today):
+    house_csv = f"data/{date}_he.csv"  # house_exchange
+    bank_csv = f"data/{date}_bank.csv"
     exist_and_save_now(house, house_csv)
     exist_and_save_now(bank, bank_csv)
 
