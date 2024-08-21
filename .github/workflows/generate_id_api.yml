@@ -1,11 +1,16 @@
 name: Next data api id deployment
 
 on:
+  workflow_run:
+    workflows: ["Actualizar precio del dolar"]
+    types:
+      - completed
   schedule:
     - cron: "1 13-23/3 * * *"
 
 jobs:
   BuildID:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
