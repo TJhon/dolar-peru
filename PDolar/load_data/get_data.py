@@ -8,6 +8,24 @@ from datetime import datetime as dt, timedelta
 import pandas as pd
 import itertools
 
+DROP_COLS = [
+    "compra",
+    "venta",
+    "img_url",
+    "companny_name",
+    "actualizacion",
+    "trash1",
+    "compra",
+    "variacion_compra",
+    "venta",
+    "variacion_venta",
+    "img_url",
+]
+
+def clean_df(df: pd.DataFrame) -> pd.DataFrame: 
+    df = df.drop(columns=DROP_COLS, errors='ignore')
+    return df
+
 MIN_DATE = dt(2024, 8, 15)
 
 MAX_DATE = dt.now()
@@ -66,7 +84,7 @@ def load_data(min_date, max_date, types: list = types_data):
     collect = {}
     for type in types:
         filter_url = [url[0] for url in urls_type if url[1] == type]
-        collect[type] = read_multiple_dates(filter_url)
+        collect[type] = clean_df(read_multiple_dates(filter_url))
 
     return collect
 
@@ -78,7 +96,7 @@ def load_day_data(date):
     for type in types_data:
         url_target = [url[0] for url in date_url if url[1] == type][0]
         # print(url_target)
-        collect[type] = pd.read_csv(url_target)
+        collect[type] = clean_df(pd.read_csv(url_target))
     return collect
 
 

@@ -1,12 +1,10 @@
-name: Next data api id deployment
+name: Next data api id deployment - rerun
 
 on:
   workflow_run:
     workflows: ["Actualizar precio del dolar"]
     types:
       - completed
-  schedule:
-    - cron: "1 13-23/3 * * *"
 
 jobs:
   BuildID:
@@ -48,3 +46,14 @@ jobs:
         env:
           REPO_KEY: ${{ secrets.GITHUB_TOKEN }}
           username: github-actions
+
+  rerun_action2:
+    needs: BuildID
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger DolarPrice Workflow Again
+        run: |
+          echo "Re-triggering dolarPrice.yml workflow..."
+          gh workflow run "dolarPrice.yml" --ref ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

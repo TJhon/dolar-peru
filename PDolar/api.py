@@ -1,5 +1,5 @@
 import requests, pandas as pd
-
+from .utils import get_last_id
 
 def value_extrar_dict(ref: dict):
     buy = ref["buy"]
@@ -29,6 +29,8 @@ class PeruDolar:
             "sale_variation",
         ],
     ) -> None:
+        if id is None:
+            id = get_last_id()
         url = base_url.format(id)
         self.url = url
         self.data_key = data_key
@@ -45,6 +47,7 @@ class PeruDolar:
 
     def extract_data(self) -> None:
         url = self.url
+        print(f"json data: {url}")
 
         response = requests.get(url).json()
         self.response = response

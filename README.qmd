@@ -1,34 +1,112 @@
 ---
-format: gfm 
+format: gfm
 jupyter: python3
 ---
 
-# Tracking price dolar
+# Dolar Perú Tracker
 
-Scrapea los precios del dolar respecto al nuevo sol (Peru), de bancos y diferentes casas de cambio
+This tool allows you to scrape the price of the dollar from various exchange houses in Peru. Data is collected every 45 minutes to ensure up-to-date information.
 
-## Instalacion
+## Installation
+
+To install the latest stable version of the package, use the following command:
 
 ```sh
 # Stable
-pip install git+https://github.com/TJhon/tesis_peru@api
+pip install git+https://github.com/TJhon/dolar-peru
 ```
 
 ## Usage
 
+### Last Track
+
+To use the tool and access the most recent information, follow these steps:
+
+1. Import the `PeruDolar` class from the `PDolar.api` module:
+
 ```{python}
 from PDolar.api import PeruDolar
-tracker = PeruDolar()
 ```
 
-```{python}
-tracker.bank
-```
+2. Create an instance of the tracker. You can pass a specific ID if needed, or `None` to use the default configuration:
 
 ```{python}
-tracker.houses
+tracker = PeruDolar(id = None)
 ```
+
+3. Access the information from banks:
+
+```{python}
+tracker.bank.tail()
+```
+
+4. Check the data from exchange houses:
+
+```{python}
+tracker.houses.tail()
+```
+
+5. Retrieve data from SUNAT:
 
 ```{python}
 tracker.sunat
 ```
+
+### Dates
+
+The `PDolar` module provides functions to load and retrieve data related to currency exchange rates from different sources, such as exchange houses (`he`) and banks (`bank`). The functions return dictionaries containing the required data, with default keys for exchange houses and banks.
+
+```{python}
+from PDolar.load_data.get_data import load_data, last_days_data, load_day_data
+
+from datetime import datetime as dt, timedelta
+```
+
+#### Between dates
+
+Load data for a range of dates between
+
+```{python}
+today = dt(2024, 8, 19)
+day_n = dt(2024, 8, 16)
+
+range_data = load_data(day_n, today)
+range_data['bank'].tail()
+```
+
+```{python}
+range_data['he'].tail() # house exchanges
+```
+
+#### Last Data
+
+Retrieve data for the last days number of days.
+
+```{python}
+data_last = last_days_data(days=2)
+data_last["he"].tail()
+```
+
+```{python}
+
+data_last["bank"].tail()
+```
+
+#### Especific Date
+
+Get data for a specific date.
+
+```{python}
+data_day = load_day_data(today - timedelta(1))
+data_day["he"].tail()
+```
+
+```{python}
+
+data_day["bank"].tail()
+```
+
+
+## Contributing
+
+If you wish to contribute to this project, please fork the repository and submit a pull request with your improvements.
