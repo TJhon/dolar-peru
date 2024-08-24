@@ -47,7 +47,7 @@ class PeruDolar:
 
     def extract_data(self) -> None:
         url = self.url
-        print(f"json data: {url}")
+        #print(f"json data: {url}")
 
         response = requests.get(url).json()
         self.response = response
